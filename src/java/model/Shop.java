@@ -7,31 +7,9 @@ public class Shop {
     private String name;
     private String phoneNumber;
     private TypeOfShop type;
-    private int numberOfCashDesk;
-    private boolean delivery;
+    private Integer numberOfCashDesk;
+    private Boolean deliverable;
     private List<Product> products;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Shop)) return false;
-        Shop shop = (Shop) o;
-        return Objects.equals(getName(), shop.getName());
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getName());
-    }
-
-    public TypeOfShop getType() {
-        return type;
-    }
-
-    public void setType(TypeOfShop type) {
-        this.type = type;
-    }
 
     public String getName() {
         return name;
@@ -49,20 +27,28 @@ public class Shop {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getNumberOfCashDesk() {
+    public TypeOfShop getType() {
+        return type;
+    }
+
+    public void setType(TypeOfShop type) {
+        this.type = type;
+    }
+
+    public Integer getNumberOfCashDesk() {
         return numberOfCashDesk;
     }
 
-    public void setNumberOfCashDesk(int numberOfCashDesk) {
+    public void setNumberOfCashDesk(Integer numberOfCashDesk) {
         this.numberOfCashDesk = numberOfCashDesk;
     }
 
-    public boolean isDelivery() {
-        return delivery;
+    public Boolean getDeliverable() {
+        return deliverable;
     }
 
-    public void setDelivery(boolean delivery) {
-        this.delivery = delivery;
+    public void setDeliverable(Boolean deliverable) {
+        this.deliverable = deliverable;
     }
 
     public List<Product> getProducts() {
@@ -71,5 +57,22 @@ public class Shop {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Shop)) return false;
+        if (!super.equals(object)) return false;
+        Shop shop = (Shop) object;
+        return java.util.Objects.equals(name, shop.name) &&
+                java.util.Objects.equals(phoneNumber, shop.phoneNumber) &&
+                java.util.Objects.equals(type, shop.type) &&
+                java.util.Objects.equals(numberOfCashDesk, shop.numberOfCashDesk) &&
+                java.util.Objects.equals(deliverable, shop.deliverable) &&
+                java.util.Objects.equals(products, shop.products);
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), name, phoneNumber, type, numberOfCashDesk, deliverable, products);
     }
 }
